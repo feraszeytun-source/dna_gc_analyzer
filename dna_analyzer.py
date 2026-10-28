@@ -1,15 +1,15 @@
 def analyze_dna(sequence):
-    # تحويل الأحرف لكبيرة وإزالة المسافات الزائدة
+    # Clean sequence: convert to uppercase and strip whitespace
     sequence = sequence.upper().strip()
     
-    # حساب أطوال التسلسل وأعداد القواعد النيتروجينية
+    # Calculate sequence length and nucleotide counts
     length = len(sequence)
     a_count = sequence.count('A')
     t_count = sequence.count('T')
     g_count = sequence.count('G')
     c_count = sequence.count('C')
     
-    # حساب نسبة GC
+    # Calculate GC content percentage
     gc_content = ((g_count + c_count) / length) * 100 if length > 0 else 0
     
     return {
@@ -21,14 +21,13 @@ def analyze_dna(sequence):
         "GC Content (%)": round(gc_content, 2)
     }
 
-# تسلسل تجريبي (جزء من جين TP53 البشري)
-sample_seq = "ATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCC"
+# Interactive user input
+sample_seq = input("Enter DNA Sequence: ")
 
-# تشغيل التحليل
+# Run analysis
 results = analyze_dna(sample_seq)
 
-# طباعة التقرير
-print("--- DNA Analysis Report ---")
+# Print formatted report
+print("\n--- DNA Analysis Report ---")
 for key, value in results.items():
     print(f"{key}: {value}")
-    
